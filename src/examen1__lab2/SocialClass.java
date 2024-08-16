@@ -14,6 +14,8 @@ public abstract class SocialClass {
     public ArrayList<String> friends;
     public ArrayList<String> post;
     public String username;
+    public String informacion;
+    protected String postsHechos;
     
     public SocialClass(String username) {
         this.username = username;
@@ -36,18 +38,27 @@ public abstract class SocialClass {
     public abstract void timeline();
 
     public void myProfile() {
-        String informacion="Usuario: " + username +"\nTimeline: ";
+        informacion="Usuario: " + username +"\nTimeline: \n";
         timeline();
-        informacion+="Amigos: ";
-        AmigosFila();
+        informacion += postsHechos;
+        informacion+="\nAmigos: "+amigos();
     }
 
-    private void AmigosFila() {
-        for (int i = 0; i < friends.size(); i++) {
-            System.out.print(friends.get(i) + " ");
-            if ((i + 1) % 10 == 0 || i == friends.size() - 1) {
-                System.out.println();
+    public String amigos(){
+        String amigos="";
+        for (int contar = 0; contar < friends.size(); contar++) {
+            if (friends.get(contar) != null) {
+                amigos += "\n- " + friends.get(contar);
             }
         }
+        if (amigos.isEmpty()) {
+            return "No tiene amigos en la lista.";
+        }
+
+        return amigos;
+    }
+    
+    public String getMyProfile(){
+        return informacion;
     }
 }

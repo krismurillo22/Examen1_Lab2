@@ -5,6 +5,7 @@
 package examen1__lab2;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,16 +28,17 @@ public class Facebook extends SocialClass implements Commentable{
     }
     
     public void timeline() {
-        String postGuardados = "";
-        for (int index = 0; index<comentarios.size(); index++) {
-            postGuardados ="Post "+(index + 1);
+        postsHechos = "";
+        for (int index = 0; index<post.size(); index++) {
+            postsHechos ="Post "+(index + 1);
             for (Comment comment : comentarios) {
                 if (comment.getPostID()==index) {
-                    postGuardados+=comment.print();
+                    postsHechos+=comment.print();
                 }
             }
         }
-
     }
+    
+    
 
 }
